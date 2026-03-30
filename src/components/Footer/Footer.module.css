@@ -1,0 +1,23 @@
+.footer {
+  margin-top: auto;
+}
+
+.meta {
+  padding: 1.25rem 24px;
+  text-align: center;
+  background: #fff;
+}
+
+.metaText {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.bar {
+  background: var(--color-navy);
+  padding: clamp(2.5rem, 6vw, 4rem) 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

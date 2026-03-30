@@ -1,0 +1,32 @@
+.wrap {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin-top: 0.75rem;
+  max-width: 42rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.center .subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}

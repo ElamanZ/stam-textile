@@ -1,0 +1,36 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.mark {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
+
+.dark {
+  color: var(--color-navy);
+}
+
+.light {
+  color: #fff;
+}
+
+.wordmark {
+  line-height: 1;
+}
+
+.lg {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.lg .mark {
+  width: clamp(2.25rem, 5vw, 3rem);
+  height: clamp(2.25rem, 5vw, 3rem);
+}
