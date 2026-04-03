@@ -3,9 +3,9 @@
 }
 
 .meta {
-  padding: 1.25rem 24px;
+  padding: 1.25rem var(--layout-gutter);
   text-align: center;
-  background: #fff;
+  background: var(--color-bg);
 }
 
 .metaText {
@@ -16,7 +16,7 @@
 
 .bar {
   background: var(--color-navy);
-  padding: clamp(2.5rem, 6vw, 4rem) 24px;
+  padding: clamp(2.5rem, 6vw, 4rem) var(--layout-gutter);
   display: flex;
   justify-content: center;
   align-items: center;

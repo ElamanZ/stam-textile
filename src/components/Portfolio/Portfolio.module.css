@@ -1,6 +1,6 @@
 .section {
-  padding: clamp(3.5rem, 8vw, 6rem) 24px;
-  background: #fafafc;
+  padding: clamp(3.5rem, 8vw, 6rem) var(--layout-gutter);
+  background: var(--color-bg);
 }
 
 .container {

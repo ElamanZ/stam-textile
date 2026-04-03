@@ -1,3 +1,4 @@
+
 export const site = {
   name: "Stam Textile",
   description:
@@ -12,15 +13,14 @@ export const site = {
 } as const;
 
 export const navLinks = [
-  { href: "#services", label: "Услуги" },
-  { href: "#portfolio", label: "Каталог" },
-  { href: "#about", label: "О нас" },
-  { href: "#faq", label: "Частые вопросы" },
+  { href: "#hero", label: "Главная", id: "hero" as const },
+  { href: "#workflow", label: "Этапы Работы", id: "workflow" as const },
+  { href: "#services", label: "Услуги", id: "services" as const },
+  { href: "#contact", label: "Контакты", id: "contact" as const },
+  { href: "#about", label: "О Нас", id: "about" as const },
 ] as const;
 
 export const images = {
-  hero:
-    "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?q=85&w=2400&auto=format&fit=crop",
   services:
     "https://images.unsplash.com/photo-1516524340840-4e452f034b98?q=85&w=1600&auto=format&fit=crop",
   specialization:

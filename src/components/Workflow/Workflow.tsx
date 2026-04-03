@@ -52,7 +52,11 @@ export function Workflow() {
   }, []);
 
   return (
-    <section className={styles.section} aria-labelledby="workflow-heading">
+    <section
+      id="workflow"
+      className={styles.section}
+      aria-labelledby="workflow-heading"
+    >
       <div className={styles.headRow}>
         <SectionHeading
           id="workflow-heading"

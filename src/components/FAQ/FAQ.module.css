@@ -1,6 +1,10 @@
 .section {
-  padding: clamp(3.5rem, 8vw, 6rem) 24px;
-  background: linear-gradient(180deg, #fff 0%, #f7f8fc 100%);
+  padding: clamp(3.5rem, 8vw, 6rem) var(--layout-gutter);
+  background: linear-gradient(
+    180deg,
+    var(--color-bg) 0%,
+    var(--color-bg-gradient-end) 100%
+  );
 }
 
 .container {

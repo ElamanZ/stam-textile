@@ -1,5 +1,5 @@
 .section {
-  padding: 0 24px clamp(3.5rem, 8vw, 6rem);
+  padding: 0 var(--layout-gutter) clamp(3.5rem, 8vw, 6rem);
 }
 
 .visuallyHidden {

@@ -2,10 +2,10 @@ import { FadeIn } from "@/components/FadeIn/FadeIn";
 import styles from "./Stats.module.css";
 
 const items = [
-  { value: "300+", label: "клиентов ежемесячно" },
-  { value: "100 000+", label: "изделий в месяц" },
+  { value: "300+", label: "единиц на заказ" },
+  { value: "100 000+", label: "массовые объёмы" },
   { value: "40+", label: "сотрудников" },
-  { value: "3 этапа ОТК", label: "контроля качества" },
+  { value: "3 Этапа ОТК", label: "контроля качества" },
 ] as const;
 
 export function Stats() {
