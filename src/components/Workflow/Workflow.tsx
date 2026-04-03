@@ -1,55 +1,121 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn/FadeIn";
-import { SectionHeading } from "@/components/SectionHeading/SectionHeading";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  useCarousel,
+} from "@/components/ui/carousel";
+import SliderStep1Icon from "@/components/Icons/SliderStep1Icon";
+import SliderStep2Icon from "@/components/Icons/SliderStep2Icon";
+import SliderStep3Icon from "@/components/Icons/SliderStep3Icon";
+import SliderStep4Icon from "@/components/Icons/SliderStep4Icon";
+import SliderStep5Icon from "@/components/Icons/SliderStep5Icon";
+import SliderStep6Icon from "@/components/Icons/SliderStep6Icon";
 import styles from "./Workflow.module.css";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
+import ArrowLIcon from "../Icons/ArrowLIcon";
+import ArrowRIcon from "../Icons/ArrowRIcon";
 
 const steps = [
   {
-    n: "01",
-    title: "Оформление заказа",
-    text: "Бриф, объёмы, сроки и техническое задание.",
+    Icon: SliderStep1Icon,
+    title: "1. Обсуждение Заказа",
+    text: "Уточняем модель, объемы и требования",
+    accent: false,
   },
   {
-    n: "02",
-    title: "Подбор тканей",
-    text: "Фурнитура и материалы под ваш бюджет и задачу.",
+    Icon: SliderStep2Icon,
+    title: "2. Создание Образца",
+    text: "Разрабатываем и отшиваем первый образец",
+    accent: true,
   },
   {
-    n: "03",
-    title: "Разработка и лекала",
-    text: "Образец, примерка, корректировки перед серией.",
+    Icon: SliderStep3Icon,
+    title: "3. Доработка И Утверждение",
+    text: "Вносим правки до полного соответствия",
+    accent: false,
   },
   {
-    n: "04",
-    title: "Запуск производства",
-    text: "Пошив партии на современном оборудовании.",
+    Icon: SliderStep4Icon,
+    title: "4. Запуск Производства",
+    text: "Запускаем пошив после согласования образца",
+    accent: false,
   },
   {
-    n: "05",
-    title: "Контроль качества",
-    text: "Три этапа ОТК на линии и перед упаковкой.",
+    Icon: SliderStep5Icon,
+    title: "5. Контроль Качества",
+    text: "Проверка изделий на всех этапах",
+    accent: false,
   },
   {
-    n: "06",
-    title: "Отгрузка и выдача",
-    text: "Маркировка, упаковка, логистика по договорённости.",
+    Icon: SliderStep6Icon,
+    title: "6. Упаковка И Отгрузка",
+    text: "Подготавливаем и отправляем готовую продукцию",
+    accent: false,
   },
 ] as const;
 
-export function Workflow() {
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(1);
+function useWorkflowIconSize() {
+  const [size, setSize] = useState(180);
 
-  const scrollByDir = useCallback((dir: -1 | 1) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const card = el.querySelector<HTMLElement>("[data-step]");
-    const gap = 16;
-    const width = card ? card.offsetWidth + gap : 280;
-    el.scrollBy({ left: dir * width * 1.1, behavior: "smooth" });
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 899px)");
+    const apply = () => {
+      setSize(mq.matches ? 110 : 180);
+    };
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
   }, []);
+
+  return size;
+}
+
+function WorkflowCarouselArrows() {
+  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } =
+    useCarousel();
+
+  return (
+    <div className={styles.arrows}>
+      <button
+        type="button"
+        className={styles.arrow}
+        aria-label="Прокрутить назад"
+        disabled={!canScrollPrev}
+        onClick={scrollPrev}
+      >
+        <div className={styles.arrowIcon} aria-hidden>
+          <ArrowLIcon />
+        </div>
+      </button>
+      <button
+        type="button"
+        className={styles.arrow}
+        aria-label="Прокрутить вперёд"
+        disabled={!canScrollNext}
+        onClick={scrollNext}
+      >
+        <div className={styles.arrowIcon} aria-hidden>
+          <ArrowRIcon />
+        </div>
+      </button>
+    </div>
+  );
+}
+export function Workflow() {
+  const iconSize = useWorkflowIconSize();
+
+  // const autoplay = useRef(
+  //   Autoplay({
+  //     delay: 3000,
+  //     stopOnInteraction: false,
+  //   }),
+  // );
 
   return (
     <section
@@ -57,61 +123,52 @@ export function Workflow() {
       className={styles.section}
       aria-labelledby="workflow-heading"
     >
-      <div className={styles.headRow}>
-        <SectionHeading
-          id="workflow-heading"
-          title="Как мы работаем"
-          subtitle="Прозрачный процесс от заявки до готовой партии."
-          align="left"
-          className={styles.heading}
-        />
-        <div className={styles.arrows}>
-          <button
-            type="button"
-            className={styles.arrow}
-            aria-label="Прокрутить назад"
-            onClick={() => scrollByDir(-1)}
-          >
-            ‹
-          </button>
-          <button
-            type="button"
-            className={styles.arrow}
-            aria-label="Прокрутить вперёд"
-            onClick={() => scrollByDir(1)}
-          >
-            ›
-          </button>
-        </div>
-      </div>
-
-      <FadeIn>
-        <div className={styles.scrollerWrap}>
-          <div
-            ref={scrollerRef}
-            className={styles.scroller}
-            role="list"
-            aria-label="Этапы работы"
-          >
-            {steps.map((step, i) => (
-              <article
-                key={step.n}
-                data-step
-                role="listitem"
-                className={`${styles.card} ${active === i ? styles.cardActive : ""}`.trim()}
-                onMouseEnter={() => setActive(i)}
-                onFocus={() => setActive(i)}
-                tabIndex={0}
-              >
-                <span className={styles.badge}>{step.n}</span>
-                <div className={styles.dot} aria-hidden />
-                <h3 className={styles.cardTitle}>{step.title}</h3>
-                <p className={styles.cardText}>{step.text}</p>
-              </article>
-            ))}
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+          duration: 18,
+        }}
+        // plugins={[autoplay.current]}
+        className={styles.carouselRoot}
+      >
+        <div className={styles.inner}>
+          <div className={styles.headRow}>
+            <h2 id="workflow-heading" className={styles.title}>
+              Как Мы Работаем
+            </h2>
+            <WorkflowCarouselArrows />
           </div>
+
+          <FadeIn>
+            <div className={styles.scrollerWrap}>
+              <CarouselContent className={styles.carouselContent}>
+                {steps.map((step) => {
+                  const Icon = step.Icon;
+                  return (
+                    <CarouselItem
+                      key={step.title}
+                      className={styles.carouselItem}
+                    >
+                      <article
+                        className={`${styles.card} ${
+                          step.accent ? styles.cardAccent : ""
+                        }`}
+                      >
+                        <div className={styles.iconWrap}>
+                          <Icon size={iconSize} />
+                        </div>
+                        <h3 className={styles.cardTitle}>{step.title}</h3>
+                        <p className={styles.cardText}>{step.text}</p>
+                      </article>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+            </div>
+          </FadeIn>
         </div>
-      </FadeIn>
+      </Carousel>
     </section>
   );
 }
