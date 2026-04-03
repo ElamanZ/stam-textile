@@ -21,10 +21,6 @@ export const navLinks = [
 ] as const;
 
 export const images = {
-  services:
-    "https://images.unsplash.com/photo-1516524340840-4e452f034b98?q=85&w=1600&auto=format&fit=crop",
-  specialization:
-    "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?q=85&w=1600&auto=format&fit=crop",
   founder:
     "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=85&w=1200&auto=format&fit=crop",
   portfolio: [

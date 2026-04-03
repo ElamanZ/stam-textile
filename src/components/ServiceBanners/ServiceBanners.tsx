@@ -1,58 +1,82 @@
 import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn/FadeIn";
-import { images } from "@/lib/site";
+import serviceImg from "@/assets/images/1.png";
+import specImg from "@/assets/images/2.png";
 import styles from "./ServiceBanners.module.css";
+
+const servicesItems = [
+  "Пошив под заказ",
+  "Разработка образца",
+  "Подбор тканей",
+  "Упаковка продукции",
+] as const;
+
+const specializationItems = [
+  "Женская одежда (2 слой)",
+  "Детская одежда",
+  "Базовые модели",
+  "Массовое производство",
+] as const;
 
 export function ServiceBanners() {
   return (
-    <section id="services" className={styles.section} aria-labelledby="services-heading">
+    <section
+      id="services"
+      className={styles.section}
+      aria-labelledby="services-heading"
+    >
       <h2 id="services-heading" className={styles.visuallyHidden}>
         Услуги и специализация
       </h2>
-      <div className={styles.grid}>
-        <FadeIn className={styles.banner}>
-          <div className={styles.media}>
-            <Image
-              src={images.services}
-              alt="Швейная машина и ткань"
-              fill
-              sizes="(max-width: 900px) 100vw, 50vw"
-              className={styles.image}
-            />
-            <div className={styles.tint} aria-hidden />
-          </div>
-          <div className={styles.content}>
-            <h3 className={styles.title}>Услуги</h3>
-            <ul className={styles.list}>
-              <li>Конструирование и лекала</li>
-              <li>Разработка образца и тестовая партия</li>
-              <li>Серийный пошив и доотделка</li>
-              <li>Контроль качества и упаковка</li>
-            </ul>
-          </div>
-        </FadeIn>
+      <div className={styles.inner}>
+        <div className={styles.grid}>
+          <FadeIn className={`${styles.banner} ${styles.bannerServices}`}>
+            <div className={styles.text}>
+              <h3 className={styles.title}>Услуги</h3>
+              <ul className={styles.list}>
+                {servicesItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles.figure} aria-hidden>
+              <Image
+                src={serviceImg}
+                alt=""
+                width={580}
+                height={500}
+                className={styles.figureImg}
+                sizes="(max-width: 479px) 64vw, (max-width: 899px) 58vw, (max-width: 1199px) 64vw, 580px"
+              />
+            </div>
+          </FadeIn>
 
-        <FadeIn delay={0.08} className={styles.banner}>
-          <div className={`${styles.media} ${styles.mediaAlt}`}>
-            <Image
-              src={images.specialization}
-              alt="Манекен в изделии"
-              fill
-              sizes="(max-width: 900px) 100vw, 50vw"
-              className={styles.image}
-            />
-            <div className={`${styles.tint} ${styles.tintAlt}`} aria-hidden />
-          </div>
-          <div className={styles.content}>
-            <h3 className={styles.title}>Специализация</h3>
-            <ul className={styles.list}>
-              <li>Трикотаж и кэжуал</li>
-              <li>Корпоративная одежда и униформа</li>
-              <li>Мерч и промо-коллекции</li>
-              <li>Работа с вашими или нашими тканями</li>
-            </ul>
-          </div>
-        </FadeIn>
+          <FadeIn
+            delay={0.08}
+            className={`${styles.banner} ${styles.bannerSpec}`}
+          >
+            <div className={styles.text}>
+              <h3 className={`${styles.title} ${styles.titleDark}`}>
+                Специализация
+              </h3>
+              <ul className={`${styles.list} ${styles.listDark}`}>
+                {specializationItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles.figure} aria-hidden>
+              <Image
+                src={specImg}
+                alt=""
+                width={580}
+                height={500}
+                className={styles.figureImg}
+                sizes="(max-width: 479px) 64vw, (max-width: 899px) 58vw, (max-width: 1199px) 64vw, 580px"
+              />
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );
