@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn/FadeIn";
@@ -15,6 +16,7 @@ import SliderStep3Icon from "@/components/Icons/SliderStep3Icon";
 import SliderStep4Icon from "@/components/Icons/SliderStep4Icon";
 import SliderStep5Icon from "@/components/Icons/SliderStep5Icon";
 import SliderStep6Icon from "@/components/Icons/SliderStep6Icon";
+import { DURATION, VIEWPORT_DEFAULT, transitionPreset } from "@/lib/motion";
 import styles from "./Workflow.module.css";
 import ArrowLIcon from "../Icons/ArrowLIcon";
 import ArrowRIcon from "../Icons/ArrowRIcon";
@@ -106,6 +108,7 @@ function WorkflowCarouselArrows() {
   );
 }
 export function Workflow() {
+  const reduce = useReducedMotion();
   const iconSize = useWorkflowIconSize();
 
   return (
@@ -123,12 +126,18 @@ export function Workflow() {
         className={styles.carouselRoot}
       >
         <div className={styles.inner}>
-          <div className={styles.headRow}>
+          <motion.div
+            className={styles.headRow}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT_DEFAULT}
+            transition={transitionPreset(DURATION.relaxed, 0, reduce)}
+          >
             <h2 id="workflow-heading" className={styles.title}>
               Как Мы Работаем
             </h2>
             <WorkflowCarouselArrows />
-          </div>
+          </motion.div>
 
           <FadeIn>
             <div className={styles.scrollerWrap}>
@@ -140,17 +149,19 @@ export function Workflow() {
                       key={step.title}
                       className={styles.carouselItem}
                     >
-                      <article
+                      <motion.article
                         className={`${styles.card} ${
                           step.accent ? styles.cardAccent : ""
                         }`}
+                        whileHover={reduce ? undefined : { y: -3 }}
+                        transition={transitionPreset(DURATION.fast, 0, reduce)}
                       >
                         <div className={styles.iconWrap}>
                           <Icon size={iconSize} />
                         </div>
                         <h3 className={styles.cardTitle}>{step.title}</h3>
                         <p className={styles.cardText}>{step.text}</p>
-                      </article>
+                      </motion.article>
                     </CarouselItem>
                   );
                 })}

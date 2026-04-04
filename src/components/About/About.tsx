@@ -1,11 +1,17 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn/FadeIn";
 import InstagramIcon from "@/components/Icons/InstagramIcon";
+import { DURATION, transitionPreset } from "@/lib/motion";
 import { site } from "@/lib/site";
 import directorUmida from "@/assets/images/director_Umida.webp";
 import styles from "./About.module.css";
 
 export function About() {
+  const reduce = useReducedMotion();
+
   return (
     <section
       id="about"
@@ -51,17 +57,20 @@ export function About() {
               результат для клиента.
             </p>
           </div>
-          <a
+          <motion.a
             href={site.instagram}
             className={styles.btn}
             target="_blank"
             rel="noopener noreferrer"
+            whileHover={reduce ? undefined : { y: -2 }}
+            whileTap={reduce ? undefined : { scale: 0.985 }}
+            transition={transitionPreset(DURATION.fast, 0, reduce)}
           >
             <span className={styles.btnIcon} aria-hidden>
               <InstagramIcon size={40} />
             </span>
             <span className={styles.btnLabel}>Наш Instagram</span>
-          </a>
+          </motion.a>
         </FadeIn>
       </div>
     </section>

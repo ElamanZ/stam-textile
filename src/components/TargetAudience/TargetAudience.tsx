@@ -46,12 +46,19 @@ export function TargetAudience() {
   return (
     <section className={styles.section} aria-labelledby="audience-heading">
       <div className={styles.inner}>
-        <h2 id="audience-heading" className={styles.heading}>
-          Кому Подойдёт Наше Производство
-        </h2>
+        <FadeIn variant="fadeUpSm">
+          <h2 id="audience-heading" className={styles.heading}>
+            Кому Подойдёт Наше Производство
+          </h2>
+        </FadeIn>
         <div className={styles.grid}>
           {cards.map((card, i) => (
-            <FadeIn key={card.title} delay={i * 0.08} className={styles.card}>
+            <FadeIn
+              key={card.title}
+              variant="scaleIn"
+              delay={i * 0.08}
+              className={styles.card}
+            >
               <div className={styles.iconWrap}>
                 <AudienceIcon name={card.icon} />
               </div>

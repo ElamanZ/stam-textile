@@ -1,10 +1,12 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Logo from "@/components/Icons/Logo";
 import { ScrollToSectionLink } from "@/components/ScrollToSectionLink/ScrollToSectionLink";
 import LogoColumn from "@/components/Icons/LogoColumn";
 import InstagramIcon from "@/components/Icons/InstagramIcon";
+import { DURATION, EASE_OUT } from "@/lib/motion";
 import { navLinks, site } from "@/lib/site";
 import styles from "./Header.module.css";
 
@@ -17,6 +19,7 @@ function isNavSectionId(value: string): value is NavSectionId {
 }
 
 export function Header() {
+  const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState<NavSectionId>(
     sectionIds[0] ?? "hero",
@@ -84,16 +87,18 @@ export function Header() {
             </ul>
           </nav>
 
-          <button
+          <motion.button
             type="button"
             className={styles.burger}
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Закрыть меню" : "Открыть меню"}
             onClick={() => setOpen((v) => !v)}
+            whileTap={reduce ? undefined : { scale: 0.92 }}
+            transition={{ duration: DURATION.fast, ease: EASE_OUT }}
           >
             <span className={styles.burgerBar} data-open={open} />
-          </button>
+          </motion.button>
 
           <ScrollToSectionLink
             href="#hero"

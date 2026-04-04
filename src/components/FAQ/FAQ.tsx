@@ -85,25 +85,25 @@ export function FAQ() {
   return (
     <section id="faq" className={styles.section} aria-labelledby="faq-heading">
       <div className={styles.inner}>
-        <h2 id="faq-heading" className={styles.heading}>
-          Ответы на частые вопросы
-        </h2>
-
-        <FadeIn>
-          <div className={styles.cols}>
-            <div className={styles.col}>
-              <Accordion type="single" collapsible className={styles.accordion}>
-                <FaqColumn items={faqItems.slice(0, 4)} valueOffset={0} />
-              </Accordion>
-            </div>
-
-            <div className={styles.col}>
-              <Accordion type="single" collapsible className={styles.accordion}>
-                <FaqColumn items={faqItems.slice(4, 8)} valueOffset={4} />
-              </Accordion>
-            </div>
-          </div>
+        <FadeIn variant="fadeUpSm">
+          <h2 id="faq-heading" className={styles.heading}>
+            Ответы на частые вопросы
+          </h2>
         </FadeIn>
+
+        <div className={styles.cols}>
+          <FadeIn className={styles.col}>
+            <Accordion type="single" collapsible className={styles.accordion}>
+              <FaqColumn items={faqItems.slice(0, 4)} valueOffset={0} />
+            </Accordion>
+          </FadeIn>
+
+          <FadeIn delay={0.06} className={styles.col}>
+            <Accordion type="single" collapsible className={styles.accordion}>
+              <FaqColumn items={faqItems.slice(4, 8)} valueOffset={4} />
+            </Accordion>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );

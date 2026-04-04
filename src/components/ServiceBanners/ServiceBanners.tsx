@@ -30,7 +30,10 @@ export function ServiceBanners() {
       </h2>
       <div className={styles.inner}>
         <div className={styles.grid}>
-          <FadeIn className={`${styles.banner} ${styles.bannerServices}`}>
+          <FadeIn
+            variant="scaleIn"
+            className={`${styles.banner} ${styles.bannerServices}`}
+          >
             <div className={styles.text}>
               <h3 className={styles.title}>Услуги</h3>
               <ul className={styles.list}>
@@ -52,6 +55,7 @@ export function ServiceBanners() {
           </FadeIn>
 
           <FadeIn
+            variant="scaleIn"
             delay={0.08}
             className={`${styles.banner} ${styles.bannerSpec}`}
           >

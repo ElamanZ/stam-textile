@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import Image, { type StaticImageData } from "next/image";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
@@ -17,6 +18,7 @@ import slider3 from "@/assets/images/slider3.webp";
 import slider4 from "@/assets/images/slider4.webp";
 import slider5 from "@/assets/images/slider5.webp";
 import slider6 from "@/assets/images/slider6.webp";
+import { DURATION, VIEWPORT_DEFAULT, transitionPreset } from "@/lib/motion";
 import styles from "./Portfolio.module.css";
 
 const slides: { src: StaticImageData; quantity: string }[] = [
@@ -61,6 +63,7 @@ function PortfolioCarouselArrows() {
 }
 
 export function Portfolio() {
+  const reduce = useReducedMotion();
   const autoplay = useRef(
     Autoplay({
       delay: 3000,
@@ -84,18 +87,28 @@ export function Portfolio() {
         className={styles.carouselRoot}
       >
         <div className={styles.inner}>
-          <div className={styles.headRow}>
+          <motion.div
+            className={styles.headRow}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT_DEFAULT}
+            transition={transitionPreset(DURATION.relaxed, 0, reduce)}
+          >
             <h2 id="portfolio-heading" className={styles.title}>
               Примеры наших работ
             </h2>
             <PortfolioCarouselArrows />
-          </div>
+          </motion.div>
 
           <div className={styles.scrollerWrap}>
             <CarouselContent className={styles.track}>
               {slides.map((item, i) => (
                 <CarouselItem key={i} className={styles.slide}>
-                  <article className={styles.card}>
+                  <motion.article
+                    className={styles.card}
+                    whileHover={reduce ? undefined : { y: -4 }}
+                    transition={transitionPreset(DURATION.fast, 0, reduce)}
+                  >
                     <Image
                       src={item.src}
                       alt={`Пример работы ${i + 1}`}
@@ -104,7 +117,7 @@ export function Portfolio() {
                       className={styles.image}
                     />
                     <div className={styles.overlay}>{item.quantity}</div>
-                  </article>
+                  </motion.article>
                 </CarouselItem>
               ))}
             </CarouselContent>

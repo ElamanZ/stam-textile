@@ -1,5 +1,8 @@
-import styles from "./Footer.module.css";
+"use client";
+
+import { FadeIn } from "@/components/FadeIn/FadeIn";
 import LogoColumnWhite from "../Icons/LogoColumnWhite";
+import styles from "./Footer.module.css";
 
 const PETRIKOR_URL =
   "https://www.instagram.com/petrikor.lab?igsh=emE0Zng5eWk2cms3";
@@ -7,7 +10,7 @@ const PETRIKOR_URL =
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.credit}>
+      <FadeIn variant="fadeUpSm" className={styles.credit}>
         <p className={styles.creditTitle}>
           Сайт разработан студией—
           <a
@@ -22,12 +25,12 @@ export function Footer() {
         <p className={styles.creditSub}>
           Разработка сайтов для брендов и бизнеса
         </p>
-      </div>
-      <div className={styles.bar}>
+      </FadeIn>
+      <FadeIn variant="fadeUpSm" delay={0.06} className={styles.bar}>
         <div className={styles.barLogo}>
           <LogoColumnWhite className={styles.barLogoSvg} />
         </div>
-      </div>
+      </FadeIn>
     </footer>
   );
 }
