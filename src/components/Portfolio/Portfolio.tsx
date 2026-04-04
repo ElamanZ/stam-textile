@@ -21,13 +21,37 @@ import slider6 from "@/assets/images/slider6.webp";
 import { DURATION, VIEWPORT_DEFAULT, transitionPreset } from "@/lib/motion";
 import styles from "./Portfolio.module.css";
 
-const slides: { src: StaticImageData; quantity: string }[] = [
-  { src: slider1, quantity: "300 000 Шт" },
-  { src: slider2, quantity: "500 000 Шт" },
-  { src: slider3, quantity: "450 000 Шт" },
-  { src: slider4, quantity: "320 000 Шт" },
-  { src: slider5, quantity: "280 000 Шт" },
-  { src: slider6, quantity: "410 000 Шт" },
+const slides: { src: StaticImageData; quantity: string; alt: string }[] = [
+  {
+    src: slider1,
+    quantity: "300 000 Шт",
+    alt: "Партия пошива одежды на заказ — 300 000 шт, контрактное производство Stam Textile, Бишкек",
+  },
+  {
+    src: slider2,
+    quantity: "500 000 Шт",
+    alt: "Массовый пошив для маркетплейсов — 500 000 шт, швейное производство в Кыргызстане",
+  },
+  {
+    src: slider3,
+    quantity: "450 000 Шт",
+    alt: "Пример выпуска швейного цеха Stam Textile — 450 000 изделий",
+  },
+  {
+    src: slider4,
+    quantity: "320 000 Шт",
+    alt: "Производственная партия одежды 320 000 шт — пошив под заказ",
+  },
+  {
+    src: slider5,
+    quantity: "280 000 Шт",
+    alt: "Контрактный пошив одежды 280 000 шт для бренда",
+  },
+  {
+    src: slider6,
+    quantity: "410 000 Шт",
+    alt: "Швейное производство Stam Textile — партия 410 000 шт, Бишкек",
+  },
 ];
 
 function PortfolioCarouselArrows() {
@@ -106,12 +130,13 @@ export function Portfolio() {
                 <CarouselItem key={i} className={styles.slide}>
                   <motion.article
                     className={styles.card}
+                    aria-label={item.quantity}
                     whileHover={reduce ? undefined : { y: -4 }}
                     transition={transitionPreset(DURATION.fast, 0, reduce)}
                   >
                     <Image
                       src={item.src}
-                      alt={`Пример работы ${i + 1}`}
+                      alt={item.alt}
                       fill
                       sizes="(max-width: 639px) 255px, 300px"
                       className={styles.image}

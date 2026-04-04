@@ -23,7 +23,7 @@ export function About() {
           <div className={styles.portrait}>
             <Image
               src={directorUmida}
-              alt="Умида — руководитель производства Stam Textile"
+              alt="Умида — руководитель швейного производства Stam Textile, Бишкек"
               fill
               sizes="(max-width: 1023px) min(100vw, 526px), 526px"
               className={styles.portraitImg}

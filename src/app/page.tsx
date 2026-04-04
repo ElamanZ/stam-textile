@@ -13,18 +13,16 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Hero />
-        <Stats />
-        <TargetAudience />
-        <Workflow />
-        <Benefits />
-        <ServiceBanners />
-        <Portfolio />
-        <About />
-        <FAQ />
-        <ContactCTA />
-      </main>
+      <Hero />
+      <Stats />
+      <TargetAudience />
+      <Workflow />
+      <Benefits />
+      <ServiceBanners />
+      <Portfolio />
+      <About />
+      <FAQ />
+      <ContactCTA />
     </div>
   );
 }

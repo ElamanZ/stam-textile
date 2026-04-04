@@ -1,4 +1,8 @@
 
+.bannerSlot {
+  display: contents;
+}
+
 .inner {
   box-sizing: border-box;
   width: 100%;

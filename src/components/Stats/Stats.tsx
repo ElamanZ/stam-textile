@@ -10,7 +10,14 @@ const items = [
 
 export function Stats() {
   return (
-    <section id="stats" className={styles.section} aria-label="Показатели">
+    <section
+      id="stats"
+      className={styles.section}
+      aria-labelledby="stats-heading"
+    >
+      <h2 id="stats-heading" className={styles.visuallyHidden}>
+        Показатели производства Stam Textile в Бишкеке
+      </h2>
       <div className={styles.inner}>
         {items.map((item, i) => (
           <FadeIn key={item.value} delay={i * 0.06} className={styles.item}>

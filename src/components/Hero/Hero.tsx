@@ -43,7 +43,7 @@ export function Hero() {
           >
             <Image
               src={heroBg}
-              alt="Швейное производство: цех и оборудование"
+              alt="Цех швейного производства Stam Textile в Бишкеке — оборудование и пошив одежды на заказ"
               fill
               priority
               sizes="(max-width: 899px) 100vw, 1440px"
