@@ -16,9 +16,9 @@ const ArrowRIcon = ({ size = 40 }: Props) => {
       <path
         d="M11 20.0001H28.25M28.25 20.0001L21.35 13.1001M28.25 20.0001L21.35 26.9001"
         stroke="#2B2742"
-        stroke-width="3.45"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="3.45"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

@@ -1,24 +1,32 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn/FadeIn";
-import { images } from "@/lib/site";
+import InstagramIcon from "@/components/Icons/InstagramIcon";
+import { site } from "@/lib/site";
+import directorUmida from "@/assets/images/director_Umida.webp";
 import styles from "./About.module.css";
 
 export function About() {
   return (
-    <section id="about" className={styles.section} aria-labelledby="about-heading">
+    <section
+      id="about"
+      className={styles.section}
+      aria-labelledby="about-heading"
+    >
       <div className={styles.inner}>
         <FadeIn className={styles.visual}>
           <div className={styles.portrait}>
             <Image
-              src={images.founder}
+              src={directorUmida}
               alt="Умида — руководитель производства Stam Textile"
               fill
-              sizes="(max-width: 900px) 100vw, 42vw"
+              sizes="(max-width: 1023px) min(100vw, 526px), 526px"
               className={styles.portraitImg}
             />
+            <div className={styles.overlay}>
+              <p className={styles.name}>Умида</p>
+              <p className={styles.role}>Руководитель производства</p>
+            </div>
           </div>
-          <p className={styles.caption}>Умида · руководитель производства</p>
         </FadeIn>
 
         <FadeIn delay={0.1} className={styles.copy}>
@@ -27,35 +35,33 @@ export function About() {
           </h2>
           <div className={styles.prose}>
             <p>
-              Мы выросли из небольшой мастерской в команду швейников, технологов
-              и контролёров, которые говорят на одном языке с брендами и
-              закупкой.
+              Меня зовут Умида, я модельер-конструктор и основатель швейного
+              производства.
             </p>
             <p>
-              Наша цель — предсказуемый результат: понятные сроки, стабильная
-              посадка изделия в серии и аккуратная отделка. На каждом этапе вы
-              понимаете, что происходит с заказом.
+              Точная конструкция, продуманные детали и высокий стандарт качества
+              — основа моей работы. Я разрабатываю изделия с учётом посадки,
+              технологии и функциональности, контролируя процесс от идеи до
+              готового результата.
             </p>
             <p>
-              Работаем с трикотажем и лёгким кэжуалом, делаем мерч и корпоративные
-              линейки, помогаем стартовать новым маркам с нуля — от первого
-              образца до регулярных поставок.
+              Производство выстроено системно: каждый этап под контролем, каждая
+              модель соответствует заданному уровню. Я лично вовлечена в работу,
+              чтобы обеспечить качество, соблюдение сроков и предсказуемый
+              результат для клиента.
             </p>
           </div>
-          <Link href="#contact" className={styles.btn}>
-            <svg
-              className={styles.btnIcon}
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden
-            >
-              <path
-                d="M8 5v14l11-7-11-7Z"
-                fill="currentColor"
-              />
-            </svg>
-            Связаться с производством
-          </Link>
+          <a
+            href={site.instagram}
+            className={styles.btn}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className={styles.btnIcon} aria-hidden>
+              <InstagramIcon size={40} />
+            </span>
+            <span className={styles.btnLabel}>Наш Instagram</span>
+          </a>
         </FadeIn>
       </div>
     </section>

@@ -19,8 +19,3 @@ export const navLinks = [
   { href: "#contact", label: "Контакты", id: "contact" as const },
   { href: "#about", label: "О Нас", id: "about" as const },
 ] as const;
-
-export const images = {
-  founder:
-    "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=85&w=1200&auto=format&fit=crop",
-} as const;
