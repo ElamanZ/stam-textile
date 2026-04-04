@@ -1,41 +1,116 @@
-import Image from "next/image";
-import { FadeIn } from "@/components/FadeIn/FadeIn";
-import { SectionHeading } from "@/components/SectionHeading/SectionHeading";
-import { images } from "@/lib/site";
+"use client";
+
+import Image, { type StaticImageData } from "next/image";
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  useCarousel,
+} from "@/components/ui/carousel";
+import ArrowLIcon from "@/components/Icons/ArrowLIcon";
+import ArrowRIcon from "@/components/Icons/ArrowRIcon";
+import slider1 from "@/assets/images/slider1.webp";
+import slider2 from "@/assets/images/slider2.webp";
+import slider3 from "@/assets/images/slider3.webp";
+import slider4 from "@/assets/images/slider4.webp";
+import slider5 from "@/assets/images/slider5.webp";
+import slider6 from "@/assets/images/slider6.webp";
 import styles from "./Portfolio.module.css";
 
-const prices = ["1 200 ₽", "1 450 ₽", "980 ₽", "1 100 ₽"] as const;
+const slides: { src: StaticImageData; quantity: string }[] = [
+  { src: slider1, quantity: "300 000 Шт" },
+  { src: slider2, quantity: "500 000 Шт" },
+  { src: slider3, quantity: "450 000 Шт" },
+  { src: slider4, quantity: "320 000 Шт" },
+  { src: slider5, quantity: "280 000 Шт" },
+  { src: slider6, quantity: "410 000 Шт" },
+];
+
+function PortfolioCarouselArrows() {
+  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } =
+    useCarousel();
+
+  return (
+    <div className={styles.arrows}>
+      <button
+        type="button"
+        className={styles.arrow}
+        aria-label="Прокрутить назад"
+        disabled={!canScrollPrev}
+        onClick={scrollPrev}
+      >
+        <div className={styles.arrowIcon} aria-hidden>
+          <ArrowLIcon />
+        </div>
+      </button>
+      <button
+        type="button"
+        className={styles.arrow}
+        aria-label="Прокрутить вперёд"
+        disabled={!canScrollNext}
+        onClick={scrollNext}
+      >
+        <div className={styles.arrowIcon} aria-hidden>
+          <ArrowRIcon />
+        </div>
+      </button>
+    </div>
+  );
+}
 
 export function Portfolio() {
+  const autoplay = useRef(
+    Autoplay({
+      delay: 3000,
+      stopOnInteraction: false,
+    }),
+  );
+
   return (
     <section
       id="portfolio"
       className={styles.section}
       aria-labelledby="portfolio-heading"
     >
-      <div className={styles.container}>
-        <SectionHeading
-          id="portfolio-heading"
-          title="Примеры наших работ"
-          subtitle="Фотографии иллюстративные; финальная стоимость зависит от ткани, тиража и отделки."
-        />
-        <div className={styles.grid}>
-          {images.portfolio.map((src, i) => (
-            <FadeIn key={src} delay={i * 0.06} className={styles.card}>
-              <div className={styles.imageWrap}>
-                <Image
-                  src={src}
-                  alt={`Пример изделия ${i + 1}`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 25vw"
-                  className={styles.image}
-                />
-                <span className={styles.tag}>{prices[i]}</span>
-              </div>
-            </FadeIn>
-          ))}
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+          duration: 18,
+        }}
+        plugins={[autoplay.current]}
+        className={styles.carouselRoot}
+      >
+        <div className={styles.inner}>
+          <div className={styles.headRow}>
+            <h2 id="portfolio-heading" className={styles.title}>
+              Примеры наших работ
+            </h2>
+            <PortfolioCarouselArrows />
+          </div>
+
+          <div className={styles.scrollerWrap}>
+            <CarouselContent className={styles.track}>
+              {slides.map((item, i) => (
+                <CarouselItem key={i} className={styles.slide}>
+                  <article className={styles.card}>
+                    <Image
+                      src={item.src}
+                      alt={`Пример работы ${i + 1}`}
+                      fill
+                      sizes="(max-width: 639px) 255px, 300px"
+                      className={styles.image}
+                    />
+                    <div className={styles.overlay}>{item.quantity}</div>
+                  </article>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </div>
         </div>
-      </div>
+      </Carousel>
     </section>
   );
 }

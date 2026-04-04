@@ -1,59 +1,163 @@
 .section {
-  padding: clamp(3.5rem, 8vw, 6rem) var(--layout-gutter);
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
   background: var(--color-bg);
 }
 
-.container {
-  width: var(--container);
-  max-width: 1200px;
+/* Как у Stats .inner / Workflow .inner / Benefits .container */
+.inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--layout-max);
   margin: 0 auto;
+  padding: 0 var(--layout-gutter);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
+.headRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  flex: 1;
+  min-width: min(100%, 240px);
+  margin: 0;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000000;
+  text-align: left;
 }
 
 @media (min-width: 640px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+  .title {
+    font-size: 40px;
+    line-height: 1.15;
   }
 }
 
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
+.arrows {
+  flex-shrink: 0;
+  display: flex;
+  gap: 2rem;
+  padding-bottom: 0.25rem;
+}
+
+.arrow {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-nav-active);
+  line-height: 0;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.arrowIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.arrow:hover:not(:disabled) {
+  opacity: 0.75;
+}
+
+.arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 639px) {
+  .arrows {
+    display: none;
+  }
+}
+
+.carouselRoot {
+  width: 100%;
+}
+
+/* Как Workflow .scrollerWrap */
+.scrollerWrap {
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  margin-left: calc(-1 * var(--layout-gutter));
+  margin-right: calc(-1 * var(--layout-gutter));
+  padding-left: var(--layout-gutter);
+  padding-right: var(--layout-gutter);
+  padding-top: 4px;
+  padding-bottom: 8px;
+}
+
+.track {
+  display: flex;
+  margin-left: 0;
+}
+
+.slide {
+  flex: 0 0 255px;
+  width: 255px;
+  min-width: 0;
+  /* margin вместо flex gap — Embla loop корректно меряет слайды */
+  margin-right: 20px;
+}
+
+@media (min-width: 640px) {
+  .slide {
+    flex: 0 0 300px;
+    width: 300px;
   }
 }
 
 .card {
-  border-radius: var(--radius-md);
+  position: relative;
+  width: 255px;
+  height: 340px;
   overflow: hidden;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-card);
+  border-radius: 12px;
 }
 
-.imageWrap {
-  position: relative;
-  aspect-ratio: 3 / 4;
+@media (min-width: 640px) {
+  .card {
+    width: 300px;
+    height: 400px;
+    border-radius: 16px;
+  }
 }
 
 .image {
   object-fit: cover;
 }
 
-.tag {
+.overlay {
   position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0.45rem 1rem;
-  border-radius: var(--radius-pill);
-  background: #fff;
-  color: var(--color-navy);
-  font-size: 0.9rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  background: #00000066;
+  border-radius: 6px 6px 0 0;
+  font-size: 24px;
   font-weight: 600;
-  box-shadow: 0 8px 24px rgba(26, 26, 46, 0.12);
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .overlay {
+    padding: 14px 16px;
+    border-radius: 8px 8px 0 0;
+    font-size: 30px;
+  }
 }

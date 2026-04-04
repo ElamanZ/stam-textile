@@ -67,6 +67,8 @@
 }
 
 .cta {
+  font-family: var(--font-plus-jakarta), var(--font-advent-pro), system-ui,
+    sans-serif;
   box-sizing: border-box;
   width: min(100%, 640px);
   display: inline-flex;
