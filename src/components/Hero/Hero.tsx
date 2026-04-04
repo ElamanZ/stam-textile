@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import heroBg from "@/assets/images/heroBg.webp";
+import { ScrollToSectionLink } from "@/components/ScrollToSectionLink/ScrollToSectionLink";
 import styles from "./Hero.module.css";
 
 export function Hero() {
@@ -27,9 +27,9 @@ export function Hero() {
               <br />
               Контроль качества на каждом этапе
             </p>
-            <Link href="#contact" className={styles.cta}>
+            <ScrollToSectionLink href="#contact" className={styles.cta}>
               Обсудить заказ
-            </Link>
+            </ScrollToSectionLink>
           </div>
         </div>
       </div>

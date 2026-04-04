@@ -2,6 +2,57 @@
   margin-top: auto;
 }
 
+.credit {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--layout-max);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2rem) var(--layout-gutter);
+  text-align: left;
+  background: var(--color-bg);
+}
+
+.creditTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #2b2742;
+}
+
+@media (min-width: 768px) {
+  .creditTitle {
+    font-size: 30px;
+  }
+}
+
+.creditLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.creditLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.creditSub {
+  margin: 6px 0 0;
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .creditSub {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+}
+
 .meta {
   padding: 1.25rem var(--layout-gutter);
   text-align: center;
@@ -15,9 +66,25 @@
 }
 
 .bar {
-  background: var(--color-navy);
+  background: #2B2742;
   padding: clamp(2.5rem, 6vw, 4rem) var(--layout-gutter);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.barLogo {
+  width: 150px;
+  height: 93px;
+}
+
+@media (min-width: 768px) {
+  .barLogo {
+    width: 172px;
+    height: 107px;
+  }
+}
+
+.barLogoSvg {
+  display: block;
 }

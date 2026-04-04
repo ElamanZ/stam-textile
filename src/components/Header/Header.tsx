@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Logo from "@/components/Icons/Logo";
+import { ScrollToSectionLink } from "@/components/ScrollToSectionLink/ScrollToSectionLink";
 import LogoColumn from "@/components/Icons/LogoColumn";
 import InstagramIcon from "@/components/Icons/InstagramIcon";
 import { navLinks, site } from "@/lib/site";
@@ -72,13 +72,13 @@ export function Header() {
             <ul className={styles.links}>
               {navLinks.map((item) => (
                 <li key={item.href}>
-                  <Link
+                  <ScrollToSectionLink
                     className={styles.link}
                     data-active={activeId === item.id}
                     href={item.href}
                   >
                     {item.label}
-                  </Link>
+                  </ScrollToSectionLink>
                 </li>
               ))}
             </ul>
@@ -95,7 +95,7 @@ export function Header() {
             <span className={styles.burgerBar} data-open={open} />
           </button>
 
-          <Link
+          <ScrollToSectionLink
             href="#hero"
             className={styles.logoLink}
             onClick={closeMenu}
@@ -104,7 +104,7 @@ export function Header() {
             <span className={styles.logoMark}>
               <Logo width={212} height={67} />
             </span>
-          </Link>
+          </ScrollToSectionLink>
         </div>
       </header>
 
@@ -137,14 +137,14 @@ export function Header() {
               <ul className={styles.drawerList}>
                 {navLinks.map((item) => (
                   <li key={item.href}>
-                    <Link
+                    <ScrollToSectionLink
                       className={styles.drawerLink}
                       data-active={activeId === item.id}
                       href={item.href}
                       onClick={closeMenu}
                     >
                       {item.label}
-                    </Link>
+                    </ScrollToSectionLink>
                   </li>
                 ))}
               </ul>

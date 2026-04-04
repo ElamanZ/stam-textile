@@ -3,7 +3,6 @@
   background: var(--color-bg);
 }
 
-/* Как у Stats .inner / Workflow .inner / Benefits .container */
 .inner {
   box-sizing: border-box;
   width: 100%;
@@ -83,7 +82,6 @@
   width: 100%;
 }
 
-/* Как Workflow .scrollerWrap */
 .scrollerWrap {
   margin-top: clamp(2rem, 4vw, 2.75rem);
   margin-left: calc(-1 * var(--layout-gutter));
@@ -103,7 +101,6 @@
   flex: 0 0 255px;
   width: 255px;
   min-width: 0;
-  /* margin вместо flex gap — Embla loop корректно меряет слайды */
   margin-right: 20px;
 }
 

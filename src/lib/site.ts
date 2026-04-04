@@ -1,15 +1,13 @@
-
 export const site = {
   name: "Stam Textile",
   description:
     "Контрактное швейное производство полного цикла для брендов, маркетплейсов и мерча.",
-  telegram: "https://t.me/stamtextile",
-  whatsapp: "https://wa.me/79990000000",
-  instagram: "https://instagram.com/stamtextile",
-  phone: "+7 (999) 000-00-00",
-  phoneHref: "tel:+79990000000",
-  address: "Россия, г. Москва",
-  email: "hello@stamtextile.ru",
+  telegram: "https://t.me/+996709807698",
+  whatsapp: "https://wa.me/+996709807698",
+  vk: "https://vk.ru/id1102900725",
+  instagram: "https://www.instagram.com/stam_textile?igsh=b3g4YmZidDc4NWlw",
+  phone: "+996 709 807698",
+  phoneHref: "tel:+996709807698",
 } as const;
 
 export const navLinks = [

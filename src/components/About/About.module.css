@@ -1,5 +1,3 @@
-/* Desktop-first: от широкого экрана к узкому */
-
 .section {
   background: var(--color-bg);
   overflow-x: clip;
@@ -147,7 +145,6 @@
   text-wrap: balance;
 }
 
-/* Планшет и мобилка: одна колонка (иначе 526px + текст не помещаются в контент при ~900px) */
 @media (max-width: 1023px) {
   .inner {
     grid-template-columns: 1fr;
@@ -183,7 +180,6 @@
   }
 }
 
-/* Узкие телефоны */
 @media (max-width: 380px) {
   .name {
     font-size: 1.625rem;

@@ -2,7 +2,6 @@
   background: var(--color-bg);
 }
 
-/* Как у Header .inner / Hero .heroInner */
 .inner {
   box-sizing: border-box;
   width: 100%;
@@ -15,7 +14,6 @@
   justify-content: space-between;
 }
 
-/* Сетка <900px: меняем местами 100 000+ и 40+ (порядок в DOM без изменений на ≥900px) */
 @media (max-width: 899px) {
   .item:nth-child(1) {
     order: 1;

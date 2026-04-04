@@ -16,8 +16,6 @@ import SliderStep4Icon from "@/components/Icons/SliderStep4Icon";
 import SliderStep5Icon from "@/components/Icons/SliderStep5Icon";
 import SliderStep6Icon from "@/components/Icons/SliderStep6Icon";
 import styles from "./Workflow.module.css";
-import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
 import ArrowLIcon from "../Icons/ArrowLIcon";
 import ArrowRIcon from "../Icons/ArrowRIcon";
 
@@ -110,13 +108,6 @@ function WorkflowCarouselArrows() {
 export function Workflow() {
   const iconSize = useWorkflowIconSize();
 
-  // const autoplay = useRef(
-  //   Autoplay({
-  //     delay: 3000,
-  //     stopOnInteraction: false,
-  //   }),
-  // );
-
   return (
     <section
       id="workflow"
@@ -129,7 +120,6 @@ export function Workflow() {
           loop: true,
           duration: 18,
         }}
-        // plugins={[autoplay.current]}
         className={styles.carouselRoot}
       >
         <div className={styles.inner}>

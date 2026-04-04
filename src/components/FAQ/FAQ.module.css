@@ -141,7 +141,6 @@
     transform 0.22s ease;
 }
 
-/* закрыто: плюс виден */
 .iconPlus {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
@@ -197,7 +196,6 @@
   }
 }
 
-/* всё остальное твоё */
 .content > div {
   padding: 0;
 }

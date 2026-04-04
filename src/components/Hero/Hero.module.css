@@ -4,7 +4,6 @@
   margin-bottom: 32px;
 }
 
-/* Как у Header .inner: та же ширина и боковые отступы */
 .heroInner {
   box-sizing: border-box;
   width: 100%;
