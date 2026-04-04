@@ -27,6 +27,7 @@
 }
 
 .card {
+  border: solid 1px #C8CDEA;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -35,8 +36,6 @@
   padding: 32px;
   background: #fff;
   border-radius: 30px;
-  border: none;
-  box-shadow: var(--shadow-card);
 }
 
 .iconWrap {
