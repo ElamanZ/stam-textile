@@ -87,6 +87,9 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
   category: "business",
+  verification: {
+    google: "cKfk8tv-3OQsaeLeNflUy2I6xScxjDC6MWezjBj5zKE",
+  },
   other: {
     "geo.region": site.regionIso,
     "geo.placename": site.address.locality,
