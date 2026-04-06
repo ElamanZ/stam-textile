@@ -69,7 +69,7 @@
   font-family: var(--font-plus-jakarta), var(--font-advent-pro), system-ui,
     sans-serif;
   box-sizing: border-box;
-  width: min(100%, 640px);
+  min-width: 600px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -118,11 +118,15 @@
   .cta {
     font-size: 16px;
     padding: 0.85rem 1.75rem;
+    min-width: 100%;
   }
 }
 
 @media (max-width: 1100px) and (min-width: 900px) {
   .title {
     font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  }
+  .cta {
+    min-width: 450px;
   }
 }
