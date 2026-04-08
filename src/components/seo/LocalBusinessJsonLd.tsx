@@ -13,7 +13,7 @@ export function LocalBusinessJsonLd() {
     url,
     telephone: "+996709807698",
     email: site.email,
-    image: `${url}/opengraph-image`,
+    image: `${url}/og-cover.png`,
     address: {
       "@type": "PostalAddress",
       addressLocality: site.address.locality,

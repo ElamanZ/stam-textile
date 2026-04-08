@@ -73,9 +73,9 @@ export const metadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
+        url: "/og-cover.png",
+        width: 1024,
+        height: 455,
         alt: "Stam Textile — швейное производство в Бишкеке",
       },
     ],
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.defaultTitle,
     description: site.description,
-    images: ["/opengraph-image"],
+    images: ["/og-cover.png"],
   },
   category: "business",
   verification: {
