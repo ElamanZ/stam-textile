@@ -1,6 +1,6 @@
 "use client";
 
-import { Minus, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn/FadeIn";
 import {
   Accordion,
