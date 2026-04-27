@@ -67,7 +67,6 @@ function FaqColumn({
 
               <span className={styles.iconWrap} aria-hidden>
                 <Plus className={styles.iconPlus} size={18} strokeWidth={3} />
-                <Minus className={styles.iconMinus} size={18} strokeWidth={3} />
               </span>
             </AccordionTrigger>
 

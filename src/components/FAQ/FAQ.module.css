@@ -130,39 +130,19 @@
   color: #000000;
 }
 
-.iconPlus,
-.iconMinus {
+.iconPlus {
   position: absolute;
   left: 50%;
   top: 50%;
-  display: block;
-  transition:
-    opacity 0.22s ease,
-    transform 0.22s ease;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.iconPlus {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.iconMinus {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.82);
-  pointer-events: none;
-}
 
 .trigger[data-state="open"] .iconPlus {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.82);
-  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.trigger[data-state="open"] .iconMinus {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  pointer-events: none;
-}
 
 
 .content {
