@@ -5,26 +5,23 @@ import LogoColumnWhite from "../Icons/LogoColumnWhite";
 import styles from "./Footer.module.css";
 
 const PETRIKOR_URL =
-  "https://www.instagram.com/petrikor.lab?igsh=emE0Zng5eWk2cms3";
+  "https://www.instagram.com/petriikor?igsh=dTh3dWM1ZGxtZjk0";
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
       <FadeIn variant="fadeUpSm" className={styles.credit}>
         <p className={styles.creditTitle}>
-          Сайт разработан студией—
           <a
             href={PETRIKOR_URL}
             className={styles.creditLink}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Petrikor.lab
+            Разработка сайта
           </a>
         </p>
-        <p className={styles.creditSub}>
-          Разработка сайтов для брендов и бизнеса
-        </p>
+        <p className={styles.creditSub}>Сделаем сайт под ваш бизнес</p>
       </FadeIn>
       <FadeIn variant="fadeUpSm" delay={0.06} className={styles.bar}>
         <div className={styles.barLogo}>
